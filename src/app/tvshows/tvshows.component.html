@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <div class="row row-cols-md-auto">
+        <div *ngFor="let tvshow of tvshows" class="col-md-4 mb-4">
+            <div class="card">
+                <img src='https://image.tmdb.org/t/p/original{{ tvshow.poster_path }}' class="card-img-top img-fluid"
+                    alt="TVShow Poster">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tvshow.original_name }}</h5>
+                    <p class="card-text"><strong>Overview:</strong> {{ tvshow.overview }}</p>
+                    <p class="card-text"><strong>Release Date:</strong> {{ tvshow.first_air_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li (click)="onPage(number + 1)" *ngFor="let number of pageCount.slice(0, 10)" class="page-item">
+                <a class="page-link" style="cursor: pointer;">{{ number + 1 }}</a>
+            </li>  
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+
+            <li (click)="onPage(number + 1)" *ngFor="let number of pageCount.slice(-1)" class="page-item">
+                <a class="page-link" style="cursor: pointer;">{{ number + 1 }}</a>
+            </li>          
+        </ul>
+    </nav>
+</div>
